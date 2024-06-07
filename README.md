@@ -6,4 +6,4 @@ To run the experiment, simply do ```python3 main.py```.
 Key functions to get model is under rag/llm/cli.py file.
 Key functions to get evaluation metric is from metric import metric_utils, and call ```etric_val = metric_utils.compute_metric(response['cmd'], response['confidence'], groundtruth)```
 
-The json files are dataset and experiment results.
+The test_rag.json files are dataset and experiment results.
