@@ -60,7 +60,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--model", type=str, default='openai', choices=['openai', 'claude', 'llama'])
     args = parser.parse_args()
-    print(args.model)
+    
     load_data_in_rag()
     pre_calculate_rag()
     
@@ -73,17 +73,17 @@ if __name__ == "__main__":
         groundtruth = sample["cmd"]
         precalculated_rag = sample["rag"]
         
-        response = generate(text=invocation, platform="llama", rag=False, precalculated_rag=precalculated_rag)
+        response = generate(text=invocation, platform=args.model, rag=False, precalculated_rag=precalculated_rag)
         metric_val = metric_utils.compute_metric(response['cmd'], response['confidence'], groundtruth)
         response.update({'score': metric_val})
         print(response)
-        sample["baseline_llama"] = response
+        sample[f"baseline_{args.model}"] = response
         
-        response = generate(text=invocation, platform="llama", rag=True, precalculated_rag=precalculated_rag)
+        response = generate(text=invocation, platform=args.model, rag=True, precalculated_rag=precalculated_rag)
         metric_val = metric_utils.compute_metric(response['cmd'], response['confidence'], groundtruth)
         response.update({'score': metric_val})
         print(response)
-        sample["rag_llama"] = response
+        sample[f"rag_{args.model}"] = response
     
     with open("test_rag.json", "w") as f:
         json.dump(data, f)
@@ -91,8 +91,8 @@ if __name__ == "__main__":
     rag = 0
     baseline = 0
     for id, sample in data.items():
-        rag += sample["rag_llama"]["score"]
-        baseline += sample["baseline_llama"]["score"]
+        rag += sample[f"rag_{args.model}"]["score"]
+        baseline += sample[f"baseline_{args.model}"]["score"]
     
     print("RAG", rag/len(data))
     print("Baseline", baseline/len(data))
