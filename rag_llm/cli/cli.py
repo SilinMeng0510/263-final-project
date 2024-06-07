@@ -1,4 +1,3 @@
-import rag_llm
 from .utils import *
 from rag_llm.utils.const import *
 from rag_llm.prompt import Prompt, Memory
