@@ -1,0 +1,402 @@
+{
+    "7151": {
+        "invocation": "Search regular files under ~/mail for string \"Linux\"",
+        "cmd": "find ~/mail -type f | xargs grep \"Linux\""
+    },
+    "1710": {
+        "invocation": "Find all *.txt files under current directory that contains the regex 'pattern' and list them with their filenames and matches",
+        "cmd": "find . -type f -name '*.txt' -exec egrep pattern {} /dev/null \\;"
+    },
+    "499": {
+        "invocation": "Connect via ssh to \"your.server.example.com\" and recursively copy directory \"/path/to/foo\" on this host to direcotry \"/home/user/Desktop\" on local host, using \"blowfish\" cipher algorithm.",
+        "cmd": "scp -c blowfish -r user@your.server.example.com:/path/to/foo /home/user/Desktop/"
+    },
+    "4588": {
+        "invocation": "Move all directories in the current directory tree that have been modified in the last day to \"/path/to/target-dir\"",
+        "cmd": "find . -type d -mtime -0 -print0 | xargs -0 mv -t /path/to/target-dir"
+    },
+    "7301": {
+        "invocation": "Search the current directory tree for *bash* files",
+        "cmd": "find . -name \"*bash*\""
+    },
+    "6102": {
+        "invocation": "Remove all .gz files in the current directory tree",
+        "cmd": "find . -name '*.gz' -type f -printf '\"%p\"\\n' | xargs rm -f"
+    },
+    "6397": {
+        "invocation": "Rename '.mkv' extension to '.avi' for all files/directories under '/volume1/uploads' directory tree",
+        "cmd": "find /volume1/uploads -name \"*.mkv\" -exec rename 's/\\.mkv$/.avi/' \\{\\} \\;"
+    },
+    "2986": {
+        "invocation": "Find all subdirectories of the current directory except hidden ones",
+        "cmd": "find -maxdepth 1 -type d ! -name \".*\""
+    },
+    "9215": {
+        "invocation": "find all the files and folder that were created in 2012 on Friday of every month",
+        "cmd": "find / -daystart -mtime +41 -mtime -408 \\   -printf \"%M %n %u %g %10s %TY-%Tm-%Td %Ta %TH:%TM:%TS %h/%f\\n\" | awk '($7==\"Fri\"){print}'"
+    },
+    "6390": {
+        "invocation": "Rename \"new\" to \"old\" and make a backup if \"old\" exists",
+        "cmd": "mv new old -b"
+    },
+    "6039": {
+        "invocation": "Recursively unzip files to stdout in \"/some/dir/here\" and search for \"blah\"",
+        "cmd": "zcat -r /some/dir/here | grep \"blah\""
+    },
+    "4225": {
+        "invocation": "List files in the current directory and below",
+        "cmd": "find -ls"
+    },
+    "7419": {
+        "invocation": "Search the current directory up to depth level 2 for files and directories",
+        "cmd": "find . -maxdepth 2"
+    },
+    "129": {
+        "invocation": "Archive directory \".\" to \"server2::sharename/B\"",
+        "cmd": "rsync -av . server2::sharename/B"
+    },
+    "4959": {
+        "invocation": "Print common lines in \"file1\" and \"file2\"",
+        "cmd": "comm -12 file1 file2"
+    },
+    "4488": {
+        "invocation": "Make directory \"temp\"",
+        "cmd": "mkdir temp"
+    },
+    "6341": {
+        "invocation": "Removes 55, adds a 10-digit line number, and rearranges the date for each line in \"input\" on OSX",
+        "cmd": "nl -nrz -w10 -s\\; input | sed -E 's/55//; s/([0-9]{2})-([0-9]{2})-([0-9]{4})/\\3\\2\\1/'"
+    },
+    "7998": {
+        "invocation": "Wrap each line in \"file.txt\" to fit in 80 characters",
+        "cmd": "cat file.txt | fold"
+    },
+    "542": {
+        "invocation": "Copies file 'file.txt' to each top-level directory in the current directory.",
+        "cmd": "ls -d */ | xargs -iA cp file.txt A"
+    },
+    "639": {
+        "invocation": "Copy the executable \"python2.7\" in $PATH to \"myenv/bin/python\"",
+        "cmd": "cp `which python2.7` myenv/bin/python"
+    },
+    "6140": {
+        "invocation": "Remove all directories in and below the current directory",
+        "cmd": "find \\! -name . -type d -print0 | xargs -0 rmdir"
+    },
+    "4578": {
+        "invocation": "Move all *.pdf.marker files and their corresponding *.pdf files under ${INPUT} to ${OUTPUT}",
+        "cmd": "find ${INPUT}/ -name \"*.pdf\" -exec mv '{}' '{}'.marker ${OUTPUT} \\;"
+    },
+    "5397": {
+        "invocation": "Print the list of all regular files from the current directory tree that contain \"confirm\", case insensitive",
+        "cmd": "find . -type f -exec grep -il confirm {} \\;"
+    },
+    "1991": {
+        "invocation": "Find all directories under 'test' directory tree whose paths match the regex '.*/course[0-9]\\.[0-9]\\.[0-9]\\.[0-9]$'",
+        "cmd": "find test -type d -regex '.*/course[0-9]\\.[0-9]\\.[0-9]\\.[0-9]$'"
+    },
+    "4044": {
+        "invocation": "List all files from the current directory tree that were modified less than 60 minutes ago, omitting \".\"",
+        "cmd": "find . -mindepth 1 -mmin -60 | xargs -r ls -ld"
+    },
+    "4351": {
+        "invocation": "Locate and rename unprintable directories using inode numbers",
+        "cmd": "find . -inum 211028 -exec mv {} newname.dir \\;"
+    },
+    "4673": {
+        "invocation": "Output all lines in 'file' which contain a tab character.",
+        "cmd": "awk -F\"\\t\" 'NF>1' file"
+    },
+    "1381": {
+        "invocation": "Execute \"du -s path\" every 300 seconds",
+        "cmd": "watch -n 300 du -s path"
+    },
+    "2510": {
+        "invocation": "Find all files/directories containing the case insensitive string something' in their names under current directory tree",
+        "cmd": "find . -iname '*something*'"
+    },
+    "4713": {
+        "invocation": "Perform case insensitive search for *.gif files/directories under downloads directory",
+        "cmd": "find downloads  -iname \"*.gif\""
+    },
+    "9634": {
+        "invocation": "find foo, Foo, FOo, FOO, etc.",
+        "cmd": "find . -iname foo"
+    },
+    "9015": {
+        "invocation": "find all files in the current folder which have been modified in the last 24 hours and whose file name is of length 1",
+        "cmd": "find . -name \\? -mtime -1"
+    },
+    "7827": {
+        "invocation": "Split \"file.tar.gz\" into files of size 1024 MB with a prefix of \"file.tar.gz.part-\"",
+        "cmd": "split -b 1024m \"file.tar.gz\" \"file.tar.gz.part-\""
+    },
+    "404": {
+        "invocation": "Check if the $somedir directory is empty",
+        "cmd": "find \"$somedir\" -maxdepth 0 -empty -exec echo {} is empty. \\;"
+    },
+    "7507": {
+        "invocation": "Search the system for files whose names begin with letters 'a', 'b', or 'c'",
+        "cmd": "find  / -name '[a-c]*'"
+    },
+    "3456": {
+        "invocation": "Find only directories",
+        "cmd": "find . -type d"
+    },
+    "5764": {
+        "invocation": "Read a single character from standard input into variable \"ans\"",
+        "cmd": "read -n1 ans"
+    },
+    "8981": {
+        "invocation": "find all files in current folder which are bigger than 270MB and less than 300MB",
+        "cmd": "find . -size +270M -size -300M"
+    },
+    "7271": {
+        "invocation": "Search the current directory recursively for files last modified within the past 24 hours ignoring .swp files and paths ./es* and ./en*",
+        "cmd": "find . -mtime 0 -not \\( -name '*.swp' -o -regex '\\./es.*' -o -regex '\\./en.*' \\)"
+    },
+    "939": {
+        "invocation": "Creates temporary folder within TMPDIR, with name like current shell name and 10-letter suffix.",
+        "cmd": "mktemp -dt \"$(basename $0).XXXXXXXXXX\""
+    },
+    "5279": {
+        "invocation": "Print the current date followed by ' doing stuff'",
+        "cmd": "echo $(date) doing stuff"
+    },
+    "8880": {
+        "invocation": "extract \"phantomjs-1.9.0-linux-x86_64.tar.bz2\"",
+        "cmd": "sudo tar xvf phantomjs-1.9.0-linux-x86_64.tar.bz2"
+    },
+    "4481": {
+        "invocation": "Make directory \"foo\"",
+        "cmd": "mkdir foo"
+    },
+    "6576": {
+        "invocation": "Retrieve column number from column name \"Target\" in file \"table\"",
+        "cmd": "head -1 table | tr -s ' ' '\\n' | nl -nln |  grep \"Target\" | cut -f1"
+    },
+    "4814": {
+        "invocation": "Print a colon-separated list of all directories from the $root directory tree, except those matching pattern \".[a-z]*\"",
+        "cmd": "find \"$root\" -name \".[a-z]*\" -prune -o -type d -printf '%p:'"
+    },
+    "9599": {
+        "invocation": "find files in /dir/path/look/up directory that names are dir-name-here",
+        "cmd": "find /dir/path/look/up -name \"dir-name-here\" -print"
+    },
+    "9544": {
+        "invocation": "find all the text files in the current folder and display their Permissions and size along with their name",
+        "cmd": "find . -name \"*.txt\" -printf \"%M %f \\t %s bytes \\t%y\\n\""
+    },
+    "4720": {
+        "invocation": "Ping hostname, grep for 192.168.11 and print the IP from the output",
+        "cmd": "ping -c 1 hostname | grep 192.168.11 | grep 'bytes from' | awk '{print $4}' | sed 's/://g'"
+    },
+    "4198": {
+        "invocation": "List each subdirectory name composing the current working directory",
+        "cmd": "pwd | cut -f 1- -d\\/ --output-delimiter=$'\\n'"
+    },
+    "2409": {
+        "invocation": "Find all files under current directory and search for 'something' in those files",
+        "cmd": "find . -print | xargs grep something"
+    },
+    "5311": {
+        "invocation": "Print the file 'text1;text2;text3' replacing each space(\" \") with a newline",
+        "cmd": "cat \"text1;text2;text3\" | sed -e 's/ /\\n/g'"
+    },
+    "148": {
+        "invocation": "Attempt to connect as root via ssh to host \"IP\" and copy /root/K to local machine, passing option \"StrictHostKeyChecking=no\" to the ssh backend - this will normally fail because ssh servers by default don't (and shouldn't) accept root logins.",
+        "cmd": "scp -o StrictHostKeyChecking=no root@IP:/root/K"
+    },
+    "3940": {
+        "invocation": "Keep the last 3 components (directories) of $path",
+        "cmd": "echo $path | rev | cut -d'/' -f-3 | rev"
+    },
+    "4478": {
+        "invocation": "Make directory \"dir\" and do not cause an error if it exists",
+        "cmd": "mkdir -p dir"
+    },
+    "8977": {
+        "invocation": "find all files in current folder which are bigger than 1 MB and move them to another folder",
+        "cmd": "find . -size +1M -exec mv {} files \\+"
+    },
+    "3146": {
+        "invocation": "Find broken links using the file command on each symlinks in the system and searching for the keword 'broken' with grep",
+        "cmd": "find / -type l -print0 | xargs -0 file | grep broken"
+    },
+    "2877": {
+        "invocation": "Find all regular files in the current directory tree last modified between 1 and 3 days ago and list them using format '%TY %p\\n'",
+        "cmd": "find ./ -daystart -mtime -3 -type f  ! -mtime -1  -printf '%TY %p\\n'"
+    },
+    "8937": {
+        "invocation": "find all data files in current folder which have not been changed in the last 60 minutes and display their name without extension",
+        "cmd": "find . -iregex \"./[^/]+\\.dat\" -type f -cmin +60 -exec basename {} \\;"
+    },
+    "2277": {
+        "invocation": "Find all files of the user with UID=1000",
+        "cmd": "find -uid 1000"
+    },
+    "900": {
+        "invocation": "Creates alias for network interface 'eth0' with IP address '192.0.2.55' and network mask '255.255.255.255'.",
+        "cmd": "ifconfig eth0:fakenfs 192.0.2.55 netmask 255.255.255.255"
+    },
+    "4961": {
+        "invocation": "Print common lines in sorted files \"ignore.txt\" and \"input.txt\"",
+        "cmd": "comm -12 ignore.txt input.txt"
+    },
+    "3655": {
+        "invocation": "Finds strings with dot-separated sequence of numbers, and prints part of that sequence between the first and second dot.",
+        "cmd": "echo \"$f\" | grep -Eo '[0-9]+[.]+[0-9]+[.]?[0-9]?' | cut -d. -f2"
+    },
+    "10003": {
+        "invocation": "search for a word in all the .C files in the current directory",
+        "cmd": "find . -name \"*.c\" -exec grep -ir \"keyword\" {} \";\""
+    },
+    "6989": {
+        "invocation": "Search for *pattern* in and below current directory",
+        "cmd": "find -name \"*pattern*\""
+    },
+    "5663": {
+        "invocation": "Prints sizes of all top-level folders in a current folder with human-readable format and descending order.",
+        "cmd": "du -h --max-depth=1 . | sort -n -r"
+    },
+    "3576": {
+        "invocation": "Find the password file between sub-directory level 2 and 4",
+        "cmd": "find -mindepth 3 -maxdepth 5 -name passwd"
+    },
+    "9302": {
+        "invocation": "find all the files in the current folder which have been modified in the last one day",
+        "cmd": "find . -daystart -mtime -1 -ls"
+    },
+    "9756": {
+        "invocation": "keep only read access to all the files in a directory.",
+        "cmd": "find /path/to/dir/ -type f ! -perm 0644 -print0 | xargs -0 chmod 644"
+    },
+    "6606": {
+        "invocation": "Run 'chmod 0644' on all files in the current directory tree",
+        "cmd": "find . -type f -exec chmod 0644 {} \\;"
+    },
+    "9849": {
+        "invocation": "print all filenames of files under current dir containing 'foo', case-insensitive",
+        "cmd": "find . -type f -exec grep -il 'foo' {} \\;"
+    },
+    "8623": {
+        "invocation": "display all the files in the current folder which have been modified in the last 5*24 hours",
+        "cmd": "find . -mtime -5"
+    },
+    "2880": {
+        "invocation": "Find all regular files in the current directory tree that are not readable by all",
+        "cmd": "find -type f ! -perm -444"
+    },
+    "4928": {
+        "invocation": "Print all unique strings in $1.tmp file.",
+        "cmd": "cat $1.tmp | sort -u"
+    },
+    "5117": {
+        "invocation": "Print login information of all users except the first two and replace all instances of \" \" with \", \"",
+        "cmd": "who | awk '{ if (NR!=1 && NR!=2) {print} }' | sed -e 's/ /, /g'"
+    },
+    "275": {
+        "invocation": "Change permissions of all directories in the ~/dir_data directory tree in accordance with mode `a+xr,u+w'",
+        "cmd": "find ~/dir_data -type d -exec chmod a+xr,u+w {} \\;"
+    },
+    "8618": {
+        "invocation": "display all the files in the current folder which have been modified in the last 14*24 hours",
+        "cmd": "find . -mtime -14 -print"
+    },
+    "1576": {
+        "invocation": "Find all *.c files on the system and feed the output to wc",
+        "cmd": "find / -name *.c | wc"
+    },
+    "4303": {
+        "invocation": "List unique MD5 digests of all files in the current directory ending in .txt",
+        "cmd": "md5sum *.txt | cut -d ' ' -f 1 | sort -u"
+    },
+    "8940": {
+        "invocation": "find all directories in the current directory",
+        "cmd": "find . -type d -name \"*\""
+    },
+    "6303": {
+        "invocation": "Remove the first 13 characters of each \".txt\" filename in the \"/tmp\" directory tree and number the output",
+        "cmd": "find /tmp -type f \\( -name '*.txt' \\) |cut -c14- | nl"
+    },
+    "1342": {
+        "invocation": "Enable history in a script",
+        "cmd": "set -o history"
+    },
+    "5957": {
+        "invocation": "Recursively finds file some_file_name.xml file and prints strings with \"PUT_YOUR_STRING_HERE\" preceding each found string with file name.",
+        "cmd": "find . -type f -name some_file_name.xml -exec grep -H PUT_YOUR_STRING_HERE {} \\;"
+    },
+    "6722": {
+        "invocation": "Save the current working directory and the directory name of the current script to variable \"DIR\"",
+        "cmd": "DIR=`pwd`/`dirname $0`"
+    },
+    "2155": {
+        "invocation": "Find all files in $dir directory (non-recursive) and count them",
+        "cmd": "find \"$dir\" -maxdepth 1 -type f | wc -l"
+    },
+    "3997": {
+        "invocation": "List all aliencoders.[0-9]+ files/directories under /home/jassi/ directory",
+        "cmd": "find /home/jassi/ -name \"aliencoders.[0-9]+\" -exec ls -lrt {} + | awk '{print $9}'"
+    },
+    "9801": {
+        "invocation": "list complete path name to process associated with pid \"$1\"",
+        "cmd": "find /proc/$1/exe -printf '%l\\n'"
+    },
+    "8865": {
+        "invocation": "download content from \"http://127.0.0.1:8000\" and output to \"index.html\"",
+        "cmd": "curl http://127.0.0.1:8000 -o index.html"
+    },
+    "2313": {
+        "invocation": "Find all files that aren't owned by user www-data",
+        "cmd": "find -not -user www-data"
+    },
+    "5351": {
+        "invocation": "Print the full path of command \"rails\"",
+        "cmd": "which rails"
+    },
+    "8828": {
+        "invocation": "display the filename and size of all the files in the file system which are bigger than 20MB",
+        "cmd": "find / -type f -size +20000k -exec ls -lh {} \\; | awk '{ print $8 \": \" $5 }'"
+    },
+    "7118": {
+        "invocation": "Search for the regex \"\\$wp_version =\" in all the regular files that end with '/wp-includes/version.php' (case insensitive) in their paths in directories/files taken from the glob pattern '/var/www/vhosts/*/httpdocs' and show the matched lines along with the file names",
+        "cmd": "find /var/www/vhosts/*/httpdocs -type f -iwholename \"*/wp-includes/version.php\" -exec grep -H \"\\$wp_version =\" {} \\;"
+    },
+    "5901": {
+        "invocation": "Recursively copy all (non-hidden) files and directories in current dir except \"foo\" to location specified by variable \"other\"",
+        "cmd": "rsync --recursive --exclude 'foo' * \"$other\""
+    },
+    "8156": {
+        "invocation": "check if myfile has 0644 permissions",
+        "cmd": "find myfile -perm 0644 -print"
+    },
+    "2500": {
+        "invocation": "Find all files/directores that are newer than /etc/motd and conain the string 'top' at the beginning of their names under user's home directory tree",
+        "cmd": "find ~ -name 'top*' -newer /etc/motd"
+    },
+    "6413": {
+        "invocation": "Rename all files in current directory whose name starts with 'F0000', trimming a zero from any sequence of four zeroes in the name.",
+        "cmd": "rename s/0000/000/ F0000*"
+    },
+    "7723": {
+        "invocation": "Show the last 10 .conf files found by `find' in the /etc directory and 1 level below",
+        "cmd": "find /etc -maxdepth 2 -name \"*.conf\" | tail"
+    },
+    "3307": {
+        "invocation": "Find files owned by no user",
+        "cmd": "find / -nouser"
+    },
+    "9156": {
+        "invocation": "find all the config(.conf files) files in the folder /home/pat",
+        "cmd": "find /home/pat -iname \"*.conf\""
+    },
+    "4890": {
+        "invocation": "Print absolute path of \"PATH\"",
+        "cmd": "readlink -f PATH"
+    },
+    "7409": {
+        "invocation": "Search the current directory tree for regular files whose names match regular expression \".+-[0-9]+x[0-9]+\\.jpg\"",
+        "cmd": "find . -type f -regex \".+-[0-9]+x[0-9]+\\.jpg\""
+    }
+}
