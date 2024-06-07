@@ -6,8 +6,6 @@ memory = Memory()
 # avoid the tokenizers parallelism issue
 os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 
-model = load_model('llama')
-
 def generate(text, platform, rag, precalculated_rag=None):
     """
     This function will call and generate the commands from LLM
@@ -18,7 +16,7 @@ def generate(text, platform, rag, precalculated_rag=None):
     text = " ".join(text)
     prompt = Prompt(memory)
     # load the LLM model
-    # model = load_model(platform)
+    model = load_model(platform)
 
     response = model.to_command(prompt.gen_commands(text, rag, precalculated_rag), text)
     return response
