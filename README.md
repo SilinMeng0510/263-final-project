@@ -10,7 +10,7 @@ To specify the model (claude, openai, llama), do
 ```
 python3 main.py --model MODEL_TO_USE
 ```
-To use claude, openai, specify api key in rag_llm/cli/utils.py in the load_model function
+To use claude, openai, specify **api key** in **rag_llm/cli/utils.py in the load_model function**
 
 Key functions to get model is under rag/llm/cli.py file.
 Key functions to get evaluation metric is from metric import metric_utils, and call
