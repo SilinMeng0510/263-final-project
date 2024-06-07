@@ -1,6 +1,7 @@
 from rag_llm import generate, load_rag, delete_rag, save_rag, get_rag, remove_rag
 from metric import  metric_utils
 import json
+import argparse
 
 def load_data_in_rag():
     data = []
@@ -55,6 +56,11 @@ def pre_calculate_rag():
         json.dump(data, f)      
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--model", type=str, default='openai', choices=['openai', 'claude', 'llama'])
+    args = parser.parse_args()
+    print(args.model)
     load_data_in_rag()
     pre_calculate_rag()
     
